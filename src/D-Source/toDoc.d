@@ -136,11 +136,11 @@ string getOAToken(string postData, char[] fileName, string refreshToken){ //pass
 void writeToDoc(string docName, bool newFile, bool overwrite, string[] data, string oAuthToken){
 	writeln("Writing to doc...");
 
-    string cApi_Id = "..."; //TODO Add Execution API Key here	
+    string cApi_Id = "..."; //TODO: Add Execution API Key here	
 	string fetchUrl = "https://script.googleapis.com/v1/scripts/"~ cApi_Id ~":run";
 
 	string[] params = [docName,to!string(newFile),to!string(overwrite),join(data)];
-	JSONValue postData =  ["function":"toDoc", "devMode":"true"];
+	JSONValue postData =  ["function":"toDoc", "devMode":"true"]; //TODO: Change devMode as desired
 	postData.object["parameters"] = params;
 	auto http = HTTP(fetchUrl);
 	
