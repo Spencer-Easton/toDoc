@@ -15,7 +15,7 @@ This simple command line tool allows you to write directly from a console to a G
 #####Using toDoc  
 toDoc options  
 -f    --fileName The name of the Google Doc you want to write to. (Default: New Document From toDoc)  
--n     --newFile Creates a new Google Doc.  (Default: true)
+-n     --newFile Creates a new Google Doc.  (Default: true)  
 -o   --overwrite Overwrites the Google Doc instead of appending. (Default: false)  
 -c --clearTokens Deletes all stored OAuth tokens  
 -h        --help This help information.  
