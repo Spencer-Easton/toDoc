@@ -1,9 +1,10 @@
 function toDoc(docName,newFile,overwrite,data) {
   var workingDoc;
+  Logger.log(newFile);
   if(newFile === "true"){
-    workingDoc = DriveApp.searchFiles("mimeType='application/vnd.google-apps.document' AND title='"+docName+"'");
-  }else{
-    var files = DriveApp.getFilesByName(docName);
+    workingDoc = DocumentApp.create(newFile)
+    }else{
+    var files = DriveApp.searchFiles("mimeType='application/vnd.google-apps.document' AND title='"+docName+"'");;
       if(!files.hasNext()){
         throw new Error("No documents found by that name")
       }else{
