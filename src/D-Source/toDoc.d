@@ -103,7 +103,7 @@ string getOAToken(string postData, char[] fileName, string refreshToken){ //pass
 	//exchange code for token
 	auto http = HTTP(requestUrl);
 	version(Windows){         
-		http.handle.set(CurlOption.ssl_verifypeer, 0); // not the right answer but the below does not work
+		//http.handle.set(CurlOption.ssl_verifypeer, 0); // not the right answer but the below does not work
 		//char[] caBundle = cast(char[])read(homePath~"/cacert.pem");
 		//http.caInfo(caBundle);
 	}
@@ -145,7 +145,7 @@ void writeToDoc(string docName, bool newFile, bool overwrite, string[] data, str
 	auto http = HTTP(fetchUrl);
 	
 	version(Windows){         
-		http.handle.set(CurlOption.ssl_verifypeer, 0); // not the right answer but the below does not work
+		//http.handle.set(CurlOption.ssl_verifypeer, 0); // not the right answer but the below does not work
 		//char[] caBundle = cast(char[])read("./cacert.pem");
 		//http.caInfo(caBundle);
 	}
@@ -157,7 +157,8 @@ void writeToDoc(string docName, bool newFile, bool overwrite, string[] data, str
 	{	
       JSONValue res = parseJSON(cast(string)data);
       if("error" in res){
-      	writeln(res["error"].object["details"].array[0].object["errorMessage"].str);
+      	try{writeln(res["error"].object["details"].array[0].object["errorMessage"].str);}
+      	catch(Exception e){writeln(cast(string)data);}
       }
       if("response" in res){
       	writeln("done");
