@@ -1,8 +1,7 @@
 function toDoc(docName,newFile,overwrite,data) {
   var workingDoc;
-  Logger.log(newFile);
   if(newFile === "true"){
-    workingDoc = DocumentApp.create(newFile)
+    workingDoc = DocumentApp.create(docName);
     }else{
     var files = DriveApp.searchFiles("mimeType='application/vnd.google-apps.document' AND title='"+docName+"'");;
       if(!files.hasNext()){
