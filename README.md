@@ -3,7 +3,6 @@
 
 This simple command line tool allows you to write directly from a console to a Google Doc.  The tool has two parts, the client application written in the D language and a small Google Apps Script.  
 
-note: There is a bug on the windows side of the CURL library. Becuase of this SSL CA verification is turned off for windows builds.  Don't use this tool for anything critical or confidential.  
 
 #####Setup
 1) Create a new app script. Add the code from the src/GAS-Source directory.  
