@@ -9,6 +9,7 @@ This simple command line tool allows you to write directly from a console to a G
 2) Publish it using the Execution API.  [Check out the docs for more info.](https://developers.google.com/apps-script/guides/rest/api)  
 3) Open the scripts Dev console. Create a set of OAuth Credentials using the `Other` type.  
 4) Add the clientId, Client Secret, and the Execution API Id (the scripts Project Key) to the toDoc.d. Look for the TODOs in the code.  
+   -The source does include the clientId, Client Secret and the execution API Id to my public instance if the server script. Feel free to compile the client as is.
 5) Compile the client `dmd toDoc.d`.  
 6) The first time you run the client you will have to authenticate.   
   
