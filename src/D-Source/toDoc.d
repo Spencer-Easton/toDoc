@@ -4,8 +4,8 @@ import std.json;
 import std.process;
 import std.file;
 import std.datetime;
-import std.c.stdlib;
-import std.algorithm : sort, copy;
+import core.stdc.stdlib;
+import std.algorithm;
 import std.array;
 import std.getopt;
 import std.conv;
@@ -57,12 +57,12 @@ void removeConfigFile(){
 	if (exists(filename)!=0){
 		remove(filename);
 	}
-	std.c.stdlib.exit(0);
+	core.stdc.stdlib.exit(0);
 }
 
 string loadConfigFile(){
-  string cId = "..."; //TODO: Add Client ID
-	string cSecret = "..."; //TODO: Add Client Secret	
+  string cId = "1052420377433-jk4m14g58idknqq4qc3b0k04ethvdvvb.apps.googleusercontent.com"; //TODO: Add Client ID
+	string cSecret = "N8C-4ikhc2N3gljsyQ-lQWt4"; //TODO: Add Client Secret	
 	string redirect_uri = "urn:ietf:wg:oauth:2.0:oob";	
 	string authUrl = "https://accounts.google.com/o/oauth2/v2/auth";
 	string scopes = "https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/documents"; 
@@ -114,7 +114,7 @@ string getOAToken(string postData, char[] fileName, string refreshToken){ //pass
 		JSONValue res = parseJSON(cast(string)data);
 		if("error" in res){
 			writeln("Invalid Code\n");
-			std.c.stdlib.exit(-1);  // the memories leak?
+			core.stdc.stdlib.exit(-1);  // the memories leak?
 		}else{
 			auto cTime = Clock.currTime();
 			cTime += dur!"seconds"(res["expires_in"].integer);
@@ -136,7 +136,7 @@ string getOAToken(string postData, char[] fileName, string refreshToken){ //pass
 void writeToDoc(string docName, bool newFile, bool overwrite, string[] data, string oAuthToken){
 	writeln("Writing to doc...");
 
-    string cApi_Id = "..."; //TODO: Add Execution API Key here	
+    string cApi_Id = "MHEZo1FLHLcDoMtMRqDWs40MLm9v2IJHf"; //TODO: Add Execution API Key here	
 	string fetchUrl = "https://script.googleapis.com/v1/scripts/"~ cApi_Id ~":run";
 
 	string[] params = [docName,to!string(newFile),to!string(overwrite),join(data)];
